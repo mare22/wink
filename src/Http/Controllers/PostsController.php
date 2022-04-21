@@ -76,6 +76,7 @@ class PostsController
             'published' => request('published'),
             'markdown' => request('markdown'),
             'author_id' => request('author_id'),
+            'language' => request('language'),
             'featured_image' => request('featured_image'),
             'featured_image_caption' => request('featured_image_caption', ''),
             'publish_date' => request('publish_date', ''),
@@ -85,6 +86,9 @@ class PostsController
         validator($data, [
             'publish_date' => 'required|date',
             'author_id' => 'required',
+            'language' => Rule::in(
+                array_keys(config('wink.languages'))
+            ),
             'title' => 'required',
             'slug' => 'required|'.Rule::unique(config('wink.database_connection').'.wink_posts', 'slug')->ignore(request('id')),
         ])->validate();

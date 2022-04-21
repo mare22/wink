@@ -38,6 +38,7 @@
                     slug: '',
                     excerpt: '',
                     tags: [],
+                    language: 'en',
                     author_id: '',
                     featured_image: '',
                     featured_image_caption: '',
@@ -155,6 +156,7 @@
                     this.form.markdown = data.markdown;
                     this.form.tags = data.tags || '';
                     this.form.author_id = data.author_id || '';
+                    this.form.language = data.language || '';
                     this.form.featured_image = data.featured_image;
                     this.form.featured_image_caption = data.featured_image_caption;
                     this.form.meta = {
@@ -462,6 +464,17 @@
                 </select>
                 <form-errors :errors="errors.author_id"></form-errors>
             </div>
+
+            <div class="input-group">
+                <label for="language" class="input-label">Language</label>
+                <select name="language" class="input"
+                        v-model="form.language"
+                        id="language">
+                    <option v-for="(language, code) in this.Wink.languages" :value="code">{{language}}</option>
+                </select>
+                <form-errors :errors="errors.language"></form-errors>
+            </div>
+
 
             <div class="input-group">
                 <label for="tag_ids" class="input-label mb-4">Tags</label>
