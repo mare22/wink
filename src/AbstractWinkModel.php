@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 abstract class AbstractWinkModel extends Model
 {
+
     /**
      * Get the current connection name for the model.
      *
